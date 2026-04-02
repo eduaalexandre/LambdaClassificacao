@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Reclamacao.Classificacao.Handler.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+faff495e59f2ef9b5ac9ad3b697f4477ebd3c511")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> faff495e59f2ef9b5ac9ad3b697f4477ebd3c511
 [assembly: System.Reflection.AssemblyProductAttribute("Reclamacao.Classificacao.Handler.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Reclamacao.Classificacao.Handler.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
