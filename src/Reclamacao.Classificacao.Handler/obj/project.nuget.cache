@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "l3IM4h5dJF2d8UVA5E4p/hg+KfQbMmKUbjgo1ShL2ii3sZ8/KbhKzS3dOIF42c3Aybylk0xHUX6jlfQeT86maw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eduar\\source\\repos\\LambdaClassificacao\\src\\Reclamacao.Classificacao.Handler\\Reclamacao.Classificacao.Handler.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eduar\\.nuget\\packages\\amazon.lambda.cloudwatchevents\\4.3.0\\amazon.lambda.cloudwatchevents.4.3.0.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\amazon.lambda.core\\2.5.0\\amazon.lambda.core.2.5.0.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\amazon.lambda.serialization.systemtextjson\\2.4.4\\amazon.lambda.serialization.systemtextjson.2.4.4.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\awssdk.bedrockruntime\\3.7.411\\awssdk.bedrockruntime.3.7.411.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\awssdk.core\\3.7.400.79\\awssdk.core.3.7.400.79.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.405.5\\awssdk.dynamodbv2.3.7.405.5.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\awssdk.eventbridge\\3.7.402.3\\awssdk.eventbridge.3.7.402.3.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.2\\microsoft.extensions.configuration.binder.8.0.2.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.1\\microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.logging\\8.0.1\\microsoft.extensions.logging.8.0.1.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.2\\microsoft.extensions.logging.abstractions.8.0.2.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.logging.configuration\\8.0.1\\microsoft.extensions.logging.configuration.8.0.1.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.logging.console\\8.0.1\\microsoft.extensions.logging.console.8.0.1.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.options\\8.0.2\\microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\8.0.0\\microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
+    "C:\\Users\\eduar\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
