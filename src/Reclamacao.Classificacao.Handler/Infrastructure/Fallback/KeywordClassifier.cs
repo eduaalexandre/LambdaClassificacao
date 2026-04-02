@@ -1,18 +1,28 @@
 using Reclamacao.Classificacao.Handler.Domain.Enums;
 using Reclamacao.Classificacao.Handler.Application.Interfaces;
+using Reclamacao.Classificacao.Handler.Application.Configuration;
+using System.Globalization;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Reclamacao.Classificacao.Handler.Infrastructure.Fallback;
 
 public class KeywordClassifier : IKeywordClassifier
 {
+    private readonly decimal _minScore;
+
     private static readonly Dictionary<CategoriaReclamacao, string[]> Dicionario = new()
     {
-        [CategoriaReclamacao.Fraude] = new[] { "fraude", "golpe", "clonado", "indevida", "desconheço", "cartao" },
-        [CategoriaReclamacao.Taxas] = new[] { "taxa", "juros", "anuidade", "cobrança", "abusiva", "tarifa" },
+        [CategoriaReclamacao.Fraude] = new[] { "fraude", "golpe", "clonado", "indevida", "desconheco", "cartao" },
+        [CategoriaReclamacao.Taxas] = new[] { "taxa", "juros", "anuidade", "cobranca", "abusiva", "tarifa" },
         [CategoriaReclamacao.Atendimento] = new[] { "atendimento", "demora", "rude", "grosseria", "espera", "fila" },
         [CategoriaReclamacao.Produto] = new[] { "produto", "quebrado", "defeito", "estorno", "entrega", "atraso" }
     };
+
+    public KeywordClassifier(ClassificacaoSettings settings)
+    {
+        _minScore = settings.KeywordFallbackMinScore;
+    }
 
     public (CategoriaReclamacao Categoria, decimal Score) Classificar(string texto)
     {
@@ -32,7 +42,7 @@ public class KeywordClassifier : IKeywordClassifier
 
         var melhor = scores.OrderByDescending(s => s.Value).FirstOrDefault();
 
-        if (melhor.Value >= 0.1m)
+        if (melhor.Value >= _minScore)
         {
             return (melhor.Key, melhor.Value);
         }
@@ -40,8 +50,20 @@ public class KeywordClassifier : IKeywordClassifier
         return (CategoriaReclamacao.Outros, 0);
     }
 
-    private string Normalizar(string texto)
+    private static string Normalizar(string texto)
     {
-        return Regex.Replace(texto.ToLower(), @"[^\w\s]", "");
+        var lower = texto.ToLowerInvariant();
+        var normalized = lower.Normalize(NormalizationForm.FormD);
+        var sb = new StringBuilder();
+        foreach (var c in normalized)
+        {
+            var category = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (category != UnicodeCategory.NonSpacingMark)
+            {
+                sb.Append(c);
+            }
+        }
+        var semAcentos = sb.ToString().Normalize(NormalizationForm.FormC);
+        return Regex.Replace(semAcentos, @"[^\w\s]", "");
     }
 }

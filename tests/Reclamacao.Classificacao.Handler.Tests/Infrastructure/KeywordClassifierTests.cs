@@ -1,5 +1,6 @@
 using Xunit;
 using FluentAssertions;
+using Reclamacao.Classificacao.Handler.Application.Configuration;
 using Reclamacao.Classificacao.Handler.Infrastructure.Fallback;
 using Reclamacao.Classificacao.Handler.Domain.Enums;
 
@@ -7,7 +8,12 @@ namespace Reclamacao.Classificacao.Handler.Tests.Infrastructure;
 
 public class KeywordClassifierTests
 {
-    private readonly KeywordClassifier _sut = new();
+    private readonly KeywordClassifier _sut;
+
+    public KeywordClassifierTests()
+    {
+        _sut = new KeywordClassifier(new ClassificacaoSettings { KeywordFallbackMinScore = 0.1m });
+    }
 
     [Theory]
     [InlineData("Golpe no cartão clonado", CategoriaReclamacao.Fraude)]
@@ -16,10 +22,8 @@ public class KeywordClassifierTests
     [InlineData("Produto com defeito e atraso na entrega", CategoriaReclamacao.Produto)]
     public void Classificar_TextoComKeywords_DeveRetornarCategoriaCorreta(string texto, CategoriaReclamacao esperada)
     {
-        // Act
         var (categoria, score) = _sut.Classificar(texto);
 
-        // Assert
         categoria.Should().Be(esperada);
         score.Should().BeGreaterThan(0);
     }
@@ -30,11 +34,26 @@ public class KeywordClassifierTests
     [InlineData("   ")]
     public void Classificar_TextoInvalido_DeveRetornarOutros(string texto)
     {
-        // Act
         var (categoria, score) = _sut.Classificar(texto);
 
-        // Assert
         categoria.Should().Be(CategoriaReclamacao.Outros);
         score.Should().Be(0);
+    }
+
+    [Fact]
+    public void Classificar_TextoSemKeywords_DeveRetornarOutros()
+    {
+        var (categoria, score) = _sut.Classificar("Texto genérico sem sentido algum");
+
+        categoria.Should().Be(CategoriaReclamacao.Outros);
+        score.Should().Be(0);
+    }
+
+    [Fact]
+    public void Classificar_TextoComAcentos_DeveNormalizarEClassificar()
+    {
+        var (categoria, _) = _sut.Classificar("Cobrança abusiva de anuidade");
+
+        categoria.Should().Be(CategoriaReclamacao.Taxas);
     }
 }
